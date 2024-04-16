@@ -1,0 +1,13 @@
+// npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+npx sequelize-cli model:generate --name User --attributes employeeId:string,name:string,phoneNumber:string,profilePicture:string,role:string,createdAt:date,updatedAt:date
+npx sequelize-cli model:generate --name Motor --attributes name:string,year:string,type:string,cc:string,description:string,createdAt:date,updatedAt:date
+npx sequelize-cli model:generate --name Specification --attributes motorID:string,title:string,label:string,value:integer,createdAt:date,updatedAt:date
+npx sequelize-cli model:generate --name Feature --attributes motorID:string,type:string,imageUrl:string,description:string,title:string,createdAt:date,updatedAt:date
+npx sequelize-cli model:generate --name File --attributes motorID:string,title:string,url:string,type:string,remark:string,createdAt:date,updatedAt:date
+npx sequelize-cli model:generate --name Variant --attributes motorID:string,name:string,price:integer,createdAt:date,updatedAt:date
+npx sequelize-cli model:generate --name VariantColor --attributes motorID:string,variantID:string,imgUrl:string,createdAt:date,updatedAt:date
+
+
+
+
+
