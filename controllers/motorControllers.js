@@ -6,7 +6,7 @@ module.exports = class motorControllers {
             const motors = await Motor.findAll()
             res.status(200).json(motors)
         } catch (error) {
-            res.status(500).json(error)
+            res.status(500).json({ message : "Internal Server Error"})
         }
     }
 
@@ -18,16 +18,16 @@ module.exports = class motorControllers {
             }
             res.status(200).json(motor)
         } catch (error) {
-            res.status(500).json(error)
+            res.status(500).json({ message : "Internal Server Error"})
         }
     }
 
     static async createMotor(req, res) {
         try {
             const motor = await Motor.create(req.body)
-            res.status(201).json(motor)
+            res.status(201).json({ message: 'Motor created successfully', motor: motor })
         } catch (error) {
-            res.status(500).json(error)
+            res.status(500).json({ message : "Internal Server Error"})
         }
     }
 
@@ -38,9 +38,9 @@ module.exports = class motorControllers {
                     id: req.params.id
                 }
             })
-            res.status(200).json(motor)
+            res.status(200).json({ message: 'Motor updated successfully', motor: motor })
         } catch (error) {
-            res.status(500).json(error)
+            res.status(500).json({ message : "Internal Server Error"})
         }
     }
 
@@ -51,9 +51,9 @@ module.exports = class motorControllers {
                     id: req.params.id
                 }
             })
-            res.status(200).json(motor)
+            res.status(200).json({ message: 'Motor deleted successfully', motor: motor })
         } catch (error) {
-            res.status(500).json(error)
+            res.status(500).json({ message : "Internal Server Error"})
         }
     }
 }
