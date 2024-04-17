@@ -15,10 +15,34 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Specification.init({
-    motorID: DataTypes.STRING,
-    title: DataTypes.STRING,
-    label: DataTypes.STRING,
-    value: DataTypes.INTEGER,
+    motorID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'motorID cannot be empty'
+        }
+      }
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'title cannot be empty'
+        }
+      }
+    },
+    label: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'label cannot be empty'
+        }
+      }
+    },
+    value: DataTypes.INTEGER, // Assuming allowNull true is ok for `value` since it's numeric
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {

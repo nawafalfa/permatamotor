@@ -33,6 +33,9 @@ module.exports = class spesificationControllers {
             const specification = await Specifications.create(specData)
             res.status(201).json(specification)
         } catch (error) {
+            if (error.name === "SequelizeValidationError" || error.name === "SequelizeUniqueConstraintError") {
+                return res.status(400).json({ message: error.errors[0].message })
+            }
             res.status(500).json({ message : "Internal Server Error"})
         }
     }

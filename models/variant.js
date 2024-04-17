@@ -16,14 +16,39 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Variant.init({
-    motorID: DataTypes.STRING,
-    name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
+    motorID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'motorID cannot be empty'
+        }
+      }
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'name cannot be empty'
+        }
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'price cannot be empty'
+        }
+      }
+    },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Variant',
   });
+  
   return Variant;
 };

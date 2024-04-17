@@ -15,14 +15,55 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Feature.init({
-    motorID: DataTypes.STRING,
+    motorID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'motorID cannot be empty'
+        }
+      }
+    },
     type: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate : {
+        isIn: {
+          args: [['PERFORMANCE','ACCESSORIES']],
+          msg: "Type must be 'PERFORMANCE' or 'ACCESSORIES'"
+        },
+        notEmpty: {
+          msg: 'type cannot be empty'
+        }
+      }
     },
-    imageUrl: DataTypes.STRING,
-    description: DataTypes.STRING,
-    title: DataTypes.STRING,
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'imageUrl cannot be empty'
+        }
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'description cannot be empty'
+        }
+      }
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'title cannot be empty'
+        }
+      }
+    },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {

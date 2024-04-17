@@ -15,17 +15,52 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   File.init({
-    motorID: DataTypes.STRING,
-    title: DataTypes.STRING,
-    url: DataTypes.STRING,
-    type: DataTypes.STRING,
+    motorID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'motorID cannot be empty'
+        }
+      }
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'title cannot be empty'
+        }
+      }
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'url cannot be empty'
+        }
+      }
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'type cannot be empty'
+        }
+      }
+    },
     remark: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isIn: {
           args: [['MAIN', 'THUMBNAIL', 'FIRST']],
-          msg: "remark must be 'MAIN', 'THUMBNAIL' or 'FIRST'"
+          msg: "Remark must be 'MAIN', 'THUMBNAIL' or 'FIRST'"
+        },
+        notEmpty: {
+          msg: 'Remark cannot be empty'
         }
       }
     },
@@ -35,5 +70,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'File',
   });
+  
   return File;
 };

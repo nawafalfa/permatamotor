@@ -32,6 +32,9 @@ module.exports = class fileControllers {
             const file = await File.create(fileData)
             res.status(201).json({ message: 'File created successfully', file: file })
         } catch (error) {
+            if (error.name === "SequelizeValidationError" || error.name === "SequelizeUniqueConstraintError") {
+                return res.status(400).json({ message: error.errors[0].message })
+            }
             res.status(500).json({ message : "Internal Server Error"})
         }
     }

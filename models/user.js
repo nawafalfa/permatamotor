@@ -14,9 +14,33 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    employeeId: DataTypes.STRING,
-    name: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
+    employeeId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Employee ID cannot be empty'
+        }
+      }
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Name cannot be empty'
+        }
+      }
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Phone number cannot be empty'
+        }
+      }
+    },
     profilePicture: DataTypes.STRING,
     role: {
       type: DataTypes.STRING,

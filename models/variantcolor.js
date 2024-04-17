@@ -16,14 +16,39 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   VariantColor.init({
-    motorID: DataTypes.STRING,
-    variantID: DataTypes.STRING,
-    imgUrl: DataTypes.STRING,
+    motorID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'motorID cannot be empty'
+        }
+      }
+    },
+    variantID: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'variantID cannot be empty'
+        }
+      }
+    },
+    imgUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'imgUrl cannot be empty'
+        }
+      }
+    },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'VariantColor',
   });
+  
   return VariantColor;
 };
