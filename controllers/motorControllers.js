@@ -1,3 +1,4 @@
+const { log } = require('console')
 const { Motor } = require('../models')
 
 module.exports = class motorControllers {
@@ -25,6 +26,8 @@ module.exports = class motorControllers {
     static async createMotor(req, res) {
         try {
             const motor = await Motor.create(req.body)
+            console.log(req.body);
+            console.log(motor);
             res.status(201).json({ message: 'Motor created successfully', motor: motor })
         } catch (error) {
             res.status(500).json({ message : "Internal Server Error"})

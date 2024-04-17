@@ -8,3 +8,5 @@ router.get('/:id', variantControllers.getVariantById)
 router.post('/:id', variantControllers.createVariant)
 router.put('/:id', variantControllers.updateVariant)
 router.delete('/:id', variantControllers.deleteVariant)
+
+module.exports = router

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const motorControllers = require('../controllers/userControllers')
+const motorControllers = require('../controllers/motorControllers')
 
 router.get('/', motorControllers.getAllMotor)
 router.get('/:id', motorControllers.getMotorById)
